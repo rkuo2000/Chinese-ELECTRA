@@ -582,7 +582,7 @@ class SQuADTask(QATask):
     with tf.io.gfile.GFile(os.path.join(
         self.config.raw_data_dir(self.name),
         split + ("-debug" if self.config.debug else "") + ".json"), "r") as f:
-      input_data = json.load(f, 'GB2312')["data"]
+      input_data = json.load(f)["data"]
 
     examples = []
     example_failures = [0]
