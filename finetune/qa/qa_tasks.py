@@ -169,7 +169,7 @@ class QATask(task.Task):
     self.v2 = v2
 
   def _add_examples(self, examples, example_failures, paragraph, split):
-    paragraph_text = paragraph["context"]
+    paragraph_text = paragraph["context_text"]
     doc_tokens = []
     char_to_word_offset = []
     prev_is_whitespace = True
@@ -186,8 +186,8 @@ class QATask(task.Task):
 
     for qa in paragraph["qas"]:
       qas_id = qa["id"] if "id" in qa else None
-      qid = qa["qid"] if "qid" in qa else None
-      question_text = qa["question"]
+      qid = qa["query_id"] if "query_id" in qa else None
+      question_text = qa["query_text"]
       start_position = None
       end_position = None
       orig_answer_text = None
